@@ -17,7 +17,7 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         genderId,
         details,
         latLong,
-      } = req.body;
+      } = req.query;
 
       if (id && Number.isNaN(parseInt(id, 10))) {
         return res.status(500).json({
@@ -97,6 +97,11 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         });
       }
 
+      const {
+        mimetype,
+        filename,
+      } = (req.files && req.files[0]) || {};
+
       await store({
         id: id,
         name: name,
@@ -106,6 +111,10 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         accountId: req.userAccountId,
         details: details,
         latLong: latLong,
+        file: {
+          type: mimetype,
+          name: filename,
+        },
       },
       client);
 

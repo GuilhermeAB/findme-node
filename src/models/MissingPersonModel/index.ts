@@ -1,3 +1,5 @@
+import { FileType } from '../FileModel';
+
 export type MissingPersonType = {
   id?: number,
   name: string,
@@ -8,4 +10,5 @@ export type MissingPersonType = {
   accountId: number,
   details?: string,
   latLong?: string,
+  file?: FileType,
 };

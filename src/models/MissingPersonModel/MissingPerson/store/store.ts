@@ -2,6 +2,7 @@ import { Client } from 'pg';
 import {
   sqlInsert, sqlUpdate,
 } from 'database/util';
+import store from 'src/models/FileModel/File/store/store';
 import { MissingPersonType } from '../..';
 
 export default async (missingPerson: MissingPersonType, client: Client): Promise<void> => {
@@ -14,9 +15,21 @@ export default async (missingPerson: MissingPersonType, client: Client): Promise
     accountId,
     details,
     latLong,
+    file,
   } = missingPerson;
 
   if (!id) {
+    let fileGroupId;
+    if (file?.name && file?.type) {
+      const fileResolve = await store({
+        name: file?.name,
+        type: file?.type,
+      },
+      client);
+
+      fileGroupId = fileResolve.fileGroupId;
+    }
+
     await sqlInsert({
       table: 'missing_person',
       values: {
@@ -27,6 +40,7 @@ export default async (missingPerson: MissingPersonType, client: Client): Promise
         account_id: accountId,
         details: details,
         lat_long: latLong,
+        file_group_id: fileGroupId,
       },
       client: client,
     });

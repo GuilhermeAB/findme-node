@@ -1,15 +1,15 @@
 import { Router } from 'express';
-// import multer from 'multer';
+import multer from 'multer';
 import fs from 'fs';
 import path from 'path';
 import AuthController from 'controllers/AuthController';
 import GenderController from 'src/controllers/GenderController';
-import auth from './middlewares/auth';
 import MissingPersonController from 'src/controllers/MissingPersonController';
+import auth from './middlewares/auth';
 
 const routes = Router();
 
-// const upload = multer({ dest: 'files/' });
+const upload = multer({ dest: 'files/' });
 
 routes.get('/', (req: any, res: any) => res.json({ message: 'Hello there' }));
 
@@ -47,6 +47,7 @@ routes.get('/get-genders', auth, GenderController.gender.get);
 // Missing person
 // #################################
 
-routes.post('/save-missing-person', auth, MissingPersonController.missingPerson.store);
+routes.post('/save-missing-person', auth, upload.any(), MissingPersonController.missingPerson.store);
+routes.get('/get-all-missing-person', MissingPersonController.missingPerson.getAll);
 
 export default routes;

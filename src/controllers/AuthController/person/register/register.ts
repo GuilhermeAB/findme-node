@@ -16,56 +16,56 @@ export default async (req: any, res: any, next: any): Promise<any> => {
       } = req.body;
 
       if (id && Number.isNaN(parseInt(id, 10))) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Identificador do usuário não é um número inteiro válido'],
           },
         });
       }
       if (!name) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Nome não foi informado'],
           },
         });
       }
       if (name.lenght > 50) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Nome deve possuir menos que 50 caracteres'],
           },
         });
       }
       if (!email) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['E-mail não foi informado'],
           },
         });
       }
       if (email.lenght > 100) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['E-mail deve possuir menos que 100 caracteres'],
           },
         });
       }
       if (!password) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Senha não foi informada'],
           },
         });
       }
       if (!confirmPassword) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Confirmação da senha não foi informada'],
           },
         });
       }
       if (password !== confirmPassword) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['Senha e confirmação de senha não coincidem'],
           },
@@ -78,7 +78,7 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         client: client,
       });
       if (resolve && resolve[0]) {
-        return res.status(500).json({
+        return res.status(200).json({
           messages: {
             errors: ['E-mail informado já possui cadastrado'],
           },

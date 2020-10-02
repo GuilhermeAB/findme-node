@@ -3,8 +3,7 @@ import bcrypt from 'bcrypt';
 import {
   sqlInsert,
 } from 'database/util';
-import { AccountType } from '../..';
-import { PersonType } from '..';
+import { AccountType, PersonType } from '../..';
 
 export default async (account: AccountType, patient: PersonType, client: Client): Promise<void> => {
   const {

@@ -1,5 +1,5 @@
-import login from './person/login/login';
-import personRegister from './person/register/register';
+import login from './Person/login/login';
+import personRegister from './Person/register/register';
 
 export default {
   person: {

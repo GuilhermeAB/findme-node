@@ -7,3 +7,8 @@ export type AccountType = {
   creationDate?: any,
   updateDate?: any,
 };
+
+export type PersonType = {
+  id?: number,
+  name: string,
+};

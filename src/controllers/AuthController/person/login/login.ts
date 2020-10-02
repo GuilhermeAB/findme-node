@@ -28,8 +28,16 @@ export default async (req: any, res: any, next: any): Promise<any> => {
 
       try {
         const resolve = await login(email, password, client);
+        console.log(resolve.token);
 
-        res.cookie('token', resolve.token, { maxAge: parseInt(process.env.SECRET_TOKEN_TIMEOUT || '6000', 10) * 1000 });
+        res.cookie('token',
+          resolve.token,
+          {
+            maxAge: ((((1000 * 60) * 60) * 24) * 7),
+            // secure: false,
+            httpOnly: true,
+          });
+
         return res.status(200).json({
           account: resolve.account,
           person: resolve.person,

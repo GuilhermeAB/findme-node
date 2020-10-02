@@ -3,6 +3,8 @@ import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
 import AuthController from 'controllers/AuthController';
+import GenderController from 'src/controllers/GenderController';
+import auth from './middlewares/auth';
 
 const routes = Router();
 
@@ -30,8 +32,14 @@ routes.get('/file', (req: any, res: any) => {
 // #################################
 // Auth
 // #################################
-// Person
+
 routes.post('/register', AuthController.person.register);
 routes.post('/login', AuthController.person.login);
+
+// #################################
+// Gender
+// #################################
+
+routes.get('/get-genders', auth, GenderController.gender.get);
 
 export default routes;

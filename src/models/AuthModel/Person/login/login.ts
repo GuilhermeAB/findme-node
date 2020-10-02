@@ -2,8 +2,7 @@ import { Client } from 'pg';
 import { sqlQuery, sqlUpdate } from 'src/database/util';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { AccountType } from '../..';
-import { PersonType } from '..';
+import { AccountType, PersonType } from '../..';
 
 export default async (email: string, password: string, client: Client): Promise<{ account: AccountType, person?: PersonType, token?: any, }> => {
   const result = await sqlQuery({

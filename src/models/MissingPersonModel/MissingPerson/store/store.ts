@@ -13,6 +13,7 @@ export default async (missingPerson: MissingPersonType, client: Client): Promise
     genderId,
     accountId,
     details,
+    latLong,
   } = missingPerson;
 
   if (!id) {
@@ -25,6 +26,7 @@ export default async (missingPerson: MissingPersonType, client: Client): Promise
         gender_id: genderId,
         account_id: accountId,
         details: details,
+        lat_long: latLong,
       },
       client: client,
     });
@@ -38,6 +40,7 @@ export default async (missingPerson: MissingPersonType, client: Client): Promise
         gender_id: genderId,
         account_id: accountId,
         details: details,
+        lat_long: latLong,
       },
       where: 'where id = $1',
       whereParams: [id],

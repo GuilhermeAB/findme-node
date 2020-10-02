@@ -7,4 +7,5 @@ export type MissingPersonType = {
   creationDatetime?: any,
   accountId: number,
   details?: string,
+  latLong?: string,
 };

@@ -15,8 +15,8 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         birthDate,
         disappearanceDate,
         genderId,
-        accountId,
         details,
+        latLong,
       } = req.body;
 
       if (id && Number.isNaN(parseInt(id, 10))) {
@@ -103,8 +103,9 @@ export default async (req: any, res: any, next: any): Promise<any> => {
         birthDate: birthDate,
         disappearanceDate: disappearanceDate,
         genderId: genderId,
-        accountId: accountId,
+        accountId: req.userAccountId,
         details: details,
+        latLong: latLong,
       },
       client);
 

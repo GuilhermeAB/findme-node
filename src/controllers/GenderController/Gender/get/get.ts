@@ -5,8 +5,6 @@ import get from 'src/models/GenderModel/Gender/get/get';
 
 export default async (req: any, res: any, next: any): Promise<any> => {
   try {
-    console.log('req.userAccountId');
-    console.log(req.userAccountId);
     return await t(async (client: Client) => {
       try {
         const resolve = await get(client);

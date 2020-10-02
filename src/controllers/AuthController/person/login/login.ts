@@ -34,7 +34,6 @@ export default async (req: any, res: any, next: any): Promise<any> => {
           resolve.token,
           {
             maxAge: ((((1000 * 60) * 60) * 24) * 7),
-            // secure: false,
             httpOnly: true,
           });
 

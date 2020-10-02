@@ -5,6 +5,7 @@ import path from 'path';
 import AuthController from 'controllers/AuthController';
 import GenderController from 'src/controllers/GenderController';
 import auth from './middlewares/auth';
+import MissingPersonController from 'src/controllers/MissingPersonController';
 
 const routes = Router();
 
@@ -41,5 +42,11 @@ routes.post('/login', AuthController.person.login);
 // #################################
 
 routes.get('/get-genders', auth, GenderController.gender.get);
+
+// #################################
+// Missing person
+// #################################
+
+routes.post('/save-missing-person', auth, MissingPersonController.missingPerson.store);
 
 export default routes;

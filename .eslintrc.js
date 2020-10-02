@@ -100,6 +100,7 @@ module.exports = {
         '@typescript-eslint/prefer-nullish-coalescing': 0,
         '@typescript-eslint/init-declarations': 0,
         '@typescript-eslint/prefer-optional-chain': 0,
+        'no-await-in-loop': 0,
       },
     },
   ],
